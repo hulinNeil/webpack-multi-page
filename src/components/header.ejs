@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+	</head>
+	<body>
+<header class="header">
+  <div class="fixed-header">
+    <div class="page-head">
+      <div class="logo"></div>
+      <div class="nav-list">
+        <% list = require('../data.js').nav %>
+        <% list.forEach(function(item){ %>
+          <a class="<%= path === item.path ? 'nav-item active' : 'nav-item' %>" href="/<%= item.path %>.html"><%= item.text %></a>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</header>

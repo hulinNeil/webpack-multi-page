@@ -1,6 +1,7 @@
 function TransfromAssets(options) {};
 
 TransfromAssets.prototype.apply = function(compiler) {
+  console.log('666');
   // 指定一个挂载到 webpack 自身的事件钩子。
   compiler.plugin('emit', function(compilation, callback) {
     for (var filename in compilation.assets) {
@@ -23,7 +24,7 @@ TransfromAssets.prototype.apply = function(compiler) {
         let source = compilation.assets[filename].source();
         source = source.replace(/\<script.*?<\/script>/ig, value => ~value.indexOf('common') ? '' : value);
         source = source.replace(/href=\"\S+?.css\"/ig, value => value.slice(0, 6) + 'css/' + value.slice(6));
-        source = source.replace(/src=\".*?.js\"/ig, value => value.slice(0, 5) + 'js/' + value.slice(5));
+        source = source.replace(/script\stype\=\"text\/javascript\"\s+src\=\"/ig, value => value + 'js/');
         compilation.assets[filename].source = () => source;
       }
     }

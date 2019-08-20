@@ -2,6 +2,8 @@ const path = require('path');
 const plugins = require('./plugins');
 const rules = require('./rules');
 
+console.log('开始进入 webpack!');
+
 module.exports = {
   entry: {
     common: '@src/js/common.js',

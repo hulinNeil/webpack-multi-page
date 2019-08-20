@@ -15,6 +15,7 @@ nav.forEach(value => {
       chunks: ['common', value.path],
       favicon: './src/assets/img/favicon.ico',
       title: value.text === '首页' ? '四川万泰和兴科技有限公司' : `${value.text}_四川万泰和兴科技有限公司`,
+      path:value.path,
       minify: {
         collapseWhitespace: true
       }

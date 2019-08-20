@@ -3,18 +3,27 @@
 	<head>
 		<meta charset="utf-8">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <!--[if lte IE 8]><script>
+    (function() {
+        var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+        var i= e.length;
+        while (i--){document.createElement(e[i]);} 
+    })() 
+    </script><![endif]-->
+    <!--[if lte IE 7]><script>alert("您正在使用的浏览器版本过低，为了您的最佳体验，请先升级浏览器。");</script><![endif]-->
 	</head>
 	<body>
 <header class="header">
-  <div class="fixed-header">
-    <div class="page-head">
-      <div class="logo"></div>
-      <div class="nav-list">
-        <% list = require('../data.js').nav %>
-        <% list.forEach(function(item){ %>
-          <a class="<%= path === item.path ? 'nav-item active' : 'nav-item' %>" href="/<%= item.path %>.html"><%= item.text %></a>
-        <% }); %>
-      </div>
+  <div class="page-head">
+    <div class="logo"></div>
+    <div class="nav-list">
+      <% list = require('../data.js').nav %>
+      <% list.forEach(function(item){ %>
+        <a class="<%= htmlWebpackPlugin.options.path === item.path ? 'nav-item active' : 'nav-item' %>" href="/<%= item.path %>.html">
+          <span class="span1"><%= item.text %></span>
+          <span class="span2"><%= item.en %></span>
+        </a>
+      <% }); %>
     </div>
   </div>
 </header>
